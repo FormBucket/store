@@ -47,15 +47,6 @@ export let actions = store => ({
   loadProfile() {
     requestProfile().then(user => {
       store.setState({ user });
-
-      if (window.Intercom) {
-        window.Intercom("update", {
-          app_id: "n2h7hsol",
-          name: user.name, // Full name
-          email: user.email, // Email address
-          created_at: Math.round(new Date(user.created_on).getTime() / 1000) // Signup date as a Unix timestamp
-        });
-      }
     });
   },
 
